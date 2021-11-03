@@ -1,0 +1,25 @@
+.table {
+    display: table
+}
+.row {
+    display: table-row
+}
+.cell {
+    display: table-cell
+}
+
+h3 {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important
+}
+
+h3:after
+{
+    content:' ';
+    display:block;
+    border:1px solid #84ac87;
+}
+
+.feedback {
+    display: none
+}

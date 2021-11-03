@@ -1,0 +1,15 @@
+{
+  "name": "word-frequency-analyzer",
+  "version": "0.1",
+  "description": "",
+  "main": "start.js",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "form-data": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "pug": "^3.0.2"
+  }
+}

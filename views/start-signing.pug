@@ -1,0 +1,95 @@
+html
+  head
+    title= "Evidos Signing for Box - by Unboxyourbusiness"
+    link(rel='stylesheet', href='/styles.css')
+    link(rel="stylesheet" href="https://cdn01.boxcdn.net/fonts/1.0.2/lato/Lato-woff.css")
+    link(rel="stylesheet" href="https://cdn01.boxcdn.net/enduser/app.b624bfe498.css")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous")
+    script.
+        var startSigning = function() {
+            $.ajax({
+                url: "/instantiate",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    fileId: "#{fileId}", 
+                    authCode: "#{authCode}",
+                    Signers: [{
+                        Email: $(signerEmail).val(),
+                        SignRequestMessage: $(signRequestMessage).val(),
+                        Verifications: [
+                            {
+                                Type: "Scribble",
+                                RequireHandsignature: true,
+                                ScribbleNameFixed: true,
+                                ScribbleName: $(signerName).val()
+
+                            }
+                        ]
+                    }]
+
+                }),
+                contentType: "application/json"
+            }).done(function(data) {
+                $("#feedback").html() = ""
+            }).fail(function(data) {
+                alert(data.responseJSON.status)
+            });       
+        }
+
+
+body
+    .header
+        .title
+            h1= "Initiate signing"
+    .clear
+
+    .page-content
+        #feedback
+
+        h3="Select signing colleagues"
+        div(class="content-input-section menu-wrapper")
+
+            .table
+                .row
+                    .cell
+                        b="Signer name"
+                    .cell
+                        b="Signer e-mail"
+                .row
+                    .cell
+                        input(id="signerName")
+                    .cell
+                        input(id="signerEmail")
+
+
+        h3="Introductionary message"
+        div(class="content-input-section menu-wrapper")
+
+            textarea(id="signRequestMessage")
+
+
+        h3="Seal & Sign"
+        div(class="content-input-section menu-wrapper")
+            .btn(onclick="startSigning()")="Request signature(s)"
+
+        //-
+            span(class="keywordless-label-text" id="keywordlessSearchTabFileTypes")
+                span="File Type(s)"            
+            div(class="bdl-SelectField select-container")
+                button(class="select-button bdl-SelectButton" type="button" aria-labelledby="keywordlessSearchTabFileTypes" aria-autocomplete="list" aria-expanded="false" aria-owns="selectfield271" role="listbox" title="Any Type")="Any Type"
+                ul(class="bdl-SelectFieldDropdown overlay" id="selectfield271" role="listbox" aria-multiselectable="true" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -179px, 0px);" data-placement="top-start")
+                    li(class="datalist-item select-option" id="datalistitem420" role="option" aria-selected="true")
+                        div(class="select-option-check-icon")
+                            svg(class="icon-check " height="16" viewBox="0 0 24 24" width="16" focusable="false" aria-hidden="true" role="presentation")
+                                path(d="M0 0h24v24H0z" fill="none")
+                                path(class="fill-color" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#000000")
+                        span(class="bdl-SelectField-optionText" title="Any Type")="Any Type"
+        
+
+        
+        
+
+
+        
+    
